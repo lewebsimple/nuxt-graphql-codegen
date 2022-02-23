@@ -31,5 +31,11 @@
     "eslint": "latest",
     "graphql": "^16.3.0",
     "nuxt3": "latest"
+  },
+  "build": {
+    "externals": [
+      "chokidar",
+      "consola"
+    ]
   }
 }
