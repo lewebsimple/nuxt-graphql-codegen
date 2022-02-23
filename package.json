@@ -27,7 +27,8 @@
     "prepack": "nuxt-module-build",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
+    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
+    "release": "release-it"
   },
   "build": {
     "externals": [
@@ -45,12 +46,22 @@
     "@nuxtjs/eslint-config-typescript": "latest",
     "eslint": "latest",
     "graphql": "^16.3.0",
-    "nuxt3": "latest"
+    "nuxt3": "latest",
+    "release-it": "^14.12.5"
   },
   "peerDependencies": {
     "graphql": "^15.0.0 || ^16.0.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "release-it": {
+    "hooks": {
+      "before:init": "yarn prepack"
+    },
+    "github": {
+      "release": true
+    }
   }
 }
