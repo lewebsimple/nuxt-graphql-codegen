@@ -1,4 +1,4 @@
-# Nuxt Module
+# Nuxt GraphQL Codegen Module
 
 ## Development
 

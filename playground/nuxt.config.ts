@@ -1,11 +1,8 @@
 import { defineNuxtConfig } from 'nuxt3'
-import MyModule from '..'
+import graphqlCodegen from '..'
 
 export default defineNuxtConfig({
   modules: [
-    MyModule
-  ],
-  myModule: {
-    addPlugin: true
-  }
+    graphqlCodegen
+  ]
 })

@@ -1,24 +1,28 @@
-import { resolve } from 'path'
-import { fileURLToPath } from 'url'
-import { defineNuxtModule, addPlugin } from '@nuxt/kit'
+import { defineNuxtModule } from '@nuxt/kit'
+import consola from 'consola'
+import { generate, loadContext } from '@graphql-codegen/cli'
 
 export interface ModuleOptions {
-  addPlugin: Boolean
 }
+
+const logger = consola.withScope('nuxt-graphql-codegen')
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'my-module',
-    configKey: 'myModule'
+    name: 'nuxt-graphql-codegen',
+    configKey: 'graphqlCodegen'
   },
   defaults: {
-    addPlugin: true
   },
   setup (options, nuxt) {
-    if (options.addPlugin) {
-      const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
-      nuxt.options.build.transpile.push(runtimeDir)
-      addPlugin(resolve(runtimeDir, 'plugin'))
+    async function codegenGenerateTypings () {
+      const start = Date.now()
+      process.chdir(nuxt.options.rootDir)
+      const context = await loadContext()
+      await generate(context, true)
+      const time = Date.now() - start
+      logger.success(`GraphQL typings generated in ${time}ms`)
     }
+    nuxt.hook('build:before', codegenGenerateTypings)
   }
 })

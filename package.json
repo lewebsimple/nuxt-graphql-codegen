@@ -1,6 +1,6 @@
 {
-  "name": "my-module",
-  "version": "1.0.0",
+  "name": "nuxt-graphql-codegen",
+  "version": "0.1.0",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -21,12 +21,15 @@
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
   },
   "dependencies": {
+    "@graphql-codegen/cli": "^2.6.2",
     "@nuxt/kit": "npm:@nuxt/kit-edge@latest"
   },
   "devDependencies": {
+    "@graphql-codegen/typescript": "^2.4.5",
     "@nuxt/module-builder": "latest",
     "@nuxtjs/eslint-config-typescript": "latest",
     "eslint": "latest",
+    "graphql": "^16.3.0",
     "nuxt3": "latest"
   }
 }
