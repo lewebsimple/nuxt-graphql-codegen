@@ -33,7 +33,8 @@
   "build": {
     "externals": [
       "chokidar",
-      "consola"
+      "consola",
+      "pathe"
     ]
   },
   "dependencies": {

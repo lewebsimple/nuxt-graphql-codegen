@@ -21,7 +21,10 @@ Add to `buildModules` in `nuxt.config.ts`:
 import { defineNuxtConfig } from 'nuxt3'
 
 export default defineNuxtConfig({
-  buildModules: ['nuxt-graphql-codegen']
+  buildModules: ['nuxt-graphql-codegen'],
+  graphqlCoden: {
+    configFilePath: './codegen'
+  }
 })
 ```
 

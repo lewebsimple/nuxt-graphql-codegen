@@ -4,5 +4,8 @@ import graphqlCodegen from '..'
 export default defineNuxtConfig({
   buildModules: [
     graphqlCodegen
-  ]
+  ],
+  graphqlCodegen: {
+    configFilePath: './playground'
+  }
 })
