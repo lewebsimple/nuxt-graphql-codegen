@@ -1,5 +1,6 @@
 {
   "name": "nuxt-graphql-codegen",
+  "description": "Nuxt module for GraphQL Code Generator",
   "version": "0.1.0",
   "license": "MIT",
   "type": "module",
@@ -31,6 +32,9 @@
     "eslint": "latest",
     "graphql": "^16.3.0",
     "nuxt3": "latest"
+  },
+  "peerDependencies": {
+    "graphql": "^15.0.0 || ^16.0.0"
   },
   "build": {
     "externals": [
