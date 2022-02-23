@@ -14,5 +14,5 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
-  hello: Scalars['String'];
+  hello?: Maybe<Scalars['String']>;
 };
