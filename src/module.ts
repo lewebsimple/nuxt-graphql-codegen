@@ -56,5 +56,7 @@ export default defineNuxtModule<NuxtGraphQLCodegenOptions>({
         await generateGraphQLCodegen()
       })
     }
+
+    nuxt.options.build.transpile.push('@graphql-codegen/cli')
   }
 })
