@@ -1,7 +1,7 @@
 {
   "name": "nuxt-graphql-codegen",
   "description": "Nuxt module for GraphQL Code Generator",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "https://github.com/lewebsimple/nuxt-graphql-codegen#readme",
   "bugs": {
     "url": "https://github.com/lewebsimple/nuxt-graphql-codegen/issues"
