@@ -1,7 +1,8 @@
 {
   "name": "nuxt-graphql-codegen",
-  "description": "Nuxt module for GraphQL Code Generator",
-  "version": "0.2.0",
+  "description": "GraphQL Code Generator module for Nuxt3 / Nuxt Bridge",
+  "version": "0.3.0",
+  "author": "Pascal Martineau <pascal@lewebsimple.ca>",
   "homepage": "https://github.com/lewebsimple/nuxt-graphql-codegen#readme",
   "bugs": {
     "url": "https://github.com/lewebsimple/nuxt-graphql-codegen/issues"
@@ -11,6 +12,7 @@
     "url": "git+https://github.com/lewebsimple/nuxt-graphql-codegen.git"
   },
   "license": "MIT",
+  "type": "module",
   "exports": {
     ".": {
       "import": "./dist/module.mjs",
@@ -23,45 +25,25 @@
     "dist"
   ],
   "scripts": {
-    "build": "nuxt-module-build",
-    "release": "release-it"
+    "prepack": "nuxt-module-build",
+    "dev": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
   },
   "dependencies": {
-    "@graphql-codegen/cli": "^2.6.2",
-    "@nuxt/kit": "npm:@nuxt/kit-edge@latest"
+    "@nuxt/kit": "^3.0.0-rc.2"
   },
   "devDependencies": {
-    "@lewebsimple/eslint-config-vue": "^0.5.2",
+    "@graphql-codegen/cli": "^2.6.2",
+    "@graphql-codegen/typescript": "^2.4.10",
+    "@lewebsimple/eslint-config-vue": "^0.5.5",
     "@nuxt/module-builder": "latest",
-    "eslint": "^8.10.0",
-    "graphql": "^16.3.0",
-    "nuxt3": "latest",
-    "release-it": "^14.12.5"
+    "eslint": "latest",
+    "graphql": "^16.4.0",
+    "nuxt": "^3.0.0-rc.1"
   },
   "peerDependencies": {
+    "@graphql-codegen/cli": "^2",
     "graphql": "^15 || ^16"
-  },
-  "unbuild": {
-    "externals": [
-      "chokidar",
-      "consola",
-      "graphql",
-      "pathe"
-    ]
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org"
-  },
-  "release-it": {
-    "hooks": {
-      "before:init": "yarn build"
-    },
-    "github": {
-      "release": true
-    }
-  },
-  "eslintConfig": {
-    "extends": "@lewebsimple/eslint-config-vue"
   }
 }
