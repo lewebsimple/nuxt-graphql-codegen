@@ -1,7 +1,7 @@
 {
   "name": "nuxt-graphql-codegen",
   "description": "GraphQL Code Generator module for Nuxt3 / Nuxt Bridge",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": "Pascal Martineau <pascal@lewebsimple.ca>",
   "homepage": "https://github.com/lewebsimple/nuxt-graphql-codegen#readme",
   "bugs": {
@@ -38,6 +38,7 @@
     "@graphql-codegen/typescript": "^2.4.11",
     "@lewebsimple/eslint-config-vue": "^0.5.5",
     "@nuxt/module-builder": "latest",
+    "@nuxt/types": "^2.15.8",
     "eslint": "latest",
     "graphql": "^16.5.0",
     "nuxt": "^3.0.0-rc.1"
@@ -45,5 +46,8 @@
   "peerDependencies": {
     "@graphql-codegen/cli": "^2",
     "graphql": "^15 || ^16"
+  },
+  "eslintConfig": {
+    "extends": "@lewebsimple/eslint-config-vue"
   }
 }

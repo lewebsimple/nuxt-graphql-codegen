@@ -1,8 +1,9 @@
 import { dirname } from "pathe";
+import type { Module } from "@nuxt/types";
 import { defineNuxtModule, logger } from "@nuxt/kit";
 import { generate, loadCodegenConfig } from "@graphql-codegen/cli";
 
-export default defineNuxtModule({
+export default <Module>(<unknown>defineNuxtModule({
   meta: {
     name: "nuxt-graphql-codegen",
     configKey: "graphqlCodegen",
@@ -35,4 +36,4 @@ export default defineNuxtModule({
       }
     });
   },
-});
+}));
