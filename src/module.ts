@@ -1,15 +1,24 @@
 import { dirname } from "pathe";
-import type { Module } from "@nuxt/types";
 import { defineNuxtModule, logger } from "@nuxt/kit";
 import { generate, loadCodegenConfig } from "@graphql-codegen/cli";
 
-export default <Module>(<unknown>defineNuxtModule({
+interface ModuleOptions {
+  devOnly: boolean;
+}
+
+export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: "nuxt-graphql-codegen",
     configKey: "graphqlCodegen",
   },
-  defaults: {},
-  async setup(_options, nuxt) {
+  defaults: {
+    devOnly: false,
+  },
+  async setup({ devOnly }, nuxt) {
+    // Run in development mode only
+    if (devOnly && !nuxt.options.dev) {
+      return;
+    }
     // Load GraphQL Code Generator configuration from rootDir
     const { config, filepath } = await loadCodegenConfig({
       configFilePath: nuxt.options.rootDir,
@@ -36,4 +45,4 @@ export default <Module>(<unknown>defineNuxtModule({
       }
     });
   },
-}));
+});
