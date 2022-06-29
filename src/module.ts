@@ -16,7 +16,7 @@ export default defineNuxtModule<ModuleOptions>({
     devOnly: false,
     extensions: [".graphql", ".gql"]
   },
-  async setup({ devOnly }, nuxt) {
+  async setup({ devOnly, extensions }, nuxt) {
     // Run in development mode only
     if (devOnly && !nuxt.options.dev) {
       return;
@@ -42,7 +42,7 @@ export default defineNuxtModule<ModuleOptions>({
     // Configure hooks
     nuxt.hook("build:before", codegen);
     nuxt.hook("builder:watch", async (_event, path) => {
-      if (config.extensions.some((ext) => path.endsWith(ext))) {
+      if (extensions.some((ext) => path.endsWith(ext))) {
         await codegen();
       }
     });
