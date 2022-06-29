@@ -4,6 +4,7 @@ import { generate, loadCodegenConfig } from "@graphql-codegen/cli";
 
 interface ModuleOptions {
   devOnly: boolean;
+  extensions: string[];
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -13,6 +14,7 @@ export default defineNuxtModule<ModuleOptions>({
   },
   defaults: {
     devOnly: false,
+    extensions: [".graphql", ".gql"]
   },
   async setup({ devOnly }, nuxt) {
     // Run in development mode only
@@ -40,7 +42,7 @@ export default defineNuxtModule<ModuleOptions>({
     // Configure hooks
     nuxt.hook("build:before", codegen);
     nuxt.hook("builder:watch", async (_event, path) => {
-      if (path.endsWith(".graphql") || path.endsWith(".gql")) {
+      if (config.extensions.some((ext) => path.endsWith(ext))) {
         await codegen();
       }
     });
