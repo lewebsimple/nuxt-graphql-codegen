@@ -34,6 +34,24 @@ yarn graphql-codegen init
 
 That's it! The code generator will now be executed before each build, it will also watch for changes in `.graphql` and `.gql` files in development mode.
 
+## Configuration
+```js
+import { defineNuxtConfig } from 'nuxt'
+
+export default defineNuxtConfig({
+  modules: ["nuxt-graphql-codegen", {
+    /**
+     * @default false
+     */
+    devOnly: boolean;
+    /**
+     * @default ['.graphql', '.gql']
+     */
+    extensions: string[];
+  }],
+});
+```
+
 ## Development
 
 - Run `npm run dev:prepare` to generate type stubs.
