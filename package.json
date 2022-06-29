@@ -49,5 +49,8 @@
   },
   "eslintConfig": {
     "extends": "@lewebsimple/eslint-config-vue"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
