@@ -31,7 +31,7 @@
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0-rc.4"
+    "@nuxt/kit": "^3.0.0-rc.11"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^2.6.3",
@@ -41,7 +41,7 @@
     "@nuxt/types": "^2.15.8",
     "eslint": "latest",
     "graphql": "^16.5.0",
-    "nuxt": "^3.0.0-rc.4"
+    "nuxt": "^3.0.0-rc.11"
   },
   "peerDependencies": {
     "@graphql-codegen/cli": "^2",
