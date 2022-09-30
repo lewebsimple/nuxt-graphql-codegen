@@ -1,10 +1,11 @@
-import { dirname } from "pathe";
+import { dirname, join } from "pathe";
 import { defineNuxtModule, logger } from "@nuxt/kit";
 import { generate, loadCodegenConfig } from "@graphql-codegen/cli";
 
 interface ModuleOptions {
   devOnly: boolean;
   extensions: string[];
+  configPath: string;
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -14,18 +15,29 @@ export default defineNuxtModule<ModuleOptions>({
   },
   defaults: {
     devOnly: false,
-    extensions: [".graphql", ".gql"]
+    extensions: [".graphql", ".gql"],
+    configPath: "codegen.yml",
   },
-  async setup({ devOnly, extensions }, nuxt) {
+  async setup({ devOnly, extensions, configPath }, nuxt) {
+    let config, cwd;
+
     // Run in development mode only
     if (devOnly && !nuxt.options.dev) {
       return;
     }
-    // Load GraphQL Code Generator configuration from rootDir
-    const { config, filepath } = await loadCodegenConfig({
-      configFilePath: nuxt.options.rootDir,
-    });
-    const cwd = dirname(filepath);
+
+    // Load GraphQL Code Generator configuration
+    try {
+      const configFilePath = join(nuxt.options.rootDir, configPath);
+      const { config: codegenConfig, filepath } = await loadCodegenConfig({
+        configFilePath,
+      });
+      config = { ...codegenConfig };
+      cwd = dirname(filepath);
+    } catch {
+      logger.error(`Unable to find ${configFilePath}`);
+      return;
+    }
 
     // Execute GraphQL Code Generator
     async function codegen() {

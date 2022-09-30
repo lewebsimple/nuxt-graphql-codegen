@@ -26,7 +26,10 @@ export default defineNuxtConfig({
 });
 ```
 
-3. Create your `codegen.yml` or `codegen.json` configuration file in the project's `rootDir` with the [Initialization Wizard](https://www.graphql-code-generator.com/docs/getting-started/installation#initialization-wizard) or [manually](https://www.graphql-code-generator.com/docs/config-reference/codegen-config)
+3. Create your `codegen` configuration file with the [Initialization Wizard](https://www.graphql-code-generator.com/docs/getting-started/installation#initialization-wizard) or [manually](https://www.graphql-code-generator.com/docs/config-reference/codegen-config)
+
+
+> By default, the `codegen` file is expected to exist in the project's `rootDir`
 
 ```shell
 yarn graphql-codegen init
@@ -48,6 +51,10 @@ export default defineNuxtConfig({
      * @default ['.graphql', '.gql']
      */
     extensions: string[];
+    /**
+     * @default codegen.yml
+     */
+    configPath: string;
   }],
 });
 ```
